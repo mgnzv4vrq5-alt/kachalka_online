@@ -31,6 +31,35 @@ body {
   padding: 12px;
 }
 
+/* Screens */
+.screen {
+  display: none;
+}
+.screen.active {
+  display: block;
+}
+
+.btn-profile {
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  color: var(--tg-theme-text-color);
+  font-size: 14px;
+  cursor: pointer;
+}
+.btn-profile:active {
+  transform: scale(0.98);
+}
+
+.btn-icon-placeholder {
+  width: 44px;
+  height: 44px;
+}
+
 /* Header */
 .header {
   display: flex;
@@ -318,4 +347,136 @@ body {
 
 .empty-state p {
   margin-bottom: 8px;
+}
+
+/* Profile screen */
+.profile-section {
+  margin-bottom: 24px;
+}
+.profile-section h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+.profile-section .hint {
+  font-size: 14px;
+  color: var(--tg-theme-hint-color);
+  margin-bottom: 12px;
+}
+
+.days-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.day-check {
+  flex: 1;
+  min-width: calc(25% - 8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  background: var(--card-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.day-check input {
+  display: none;
+}
+.day-check.active {
+  border-color: var(--tg-theme-button-color);
+  background: rgba(10, 132, 255, 0.15);
+  color: var(--tg-theme-button-color);
+}
+
+.plan-days-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.plan-day-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.plan-day-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.plan-day-name {
+  font-weight: 600;
+}
+.plan-day-ex-count {
+  font-size: 13px;
+  color: var(--tg-theme-hint-color);
+}
+.btn-small {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 4px;
+}
+.btn-save-profile {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.add-plan-day {
+  margin-top: 12px;
+  padding: 14px;
+  border: 2px dashed var(--border-color);
+  border-radius: 12px;
+  text-align: center;
+  color: var(--tg-theme-hint-color);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.add-plan-day:hover {
+  border-color: var(--tg-theme-button-color);
+  color: var(--tg-theme-button-color);
+}
+
+/* Plan day modal - exercise rows */
+.plan-ex-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.plan-ex-row .plan-ex-name {
+  flex: 2;
+  min-width: 0;
+}
+.plan-ex-row .plan-ex-weight {
+  width: 60px;
+}
+.plan-ex-row .plan-ex-sets {
+  width: 50px;
+}
+.btn-tiny {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 69, 58, 0.2);
+  color: var(--danger);
+  cursor: pointer;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.plan-day-exercises {
+  margin: 16px 0;
+}
+.btn-add-ex-to-plan {
+  width: 100%;
+  margin-bottom: 16px;
 }

@@ -9,21 +9,44 @@
 </head>
 <body>
   <div class="app">
-    <!-- Выбор дня -->
-    <header class="header">
-      <button type="button" class="btn-icon" id="btnPrevDay" aria-label="Предыдущий день">‹</button>
-      <h1 class="date-title" id="dateTitle">7 февраля 2025</h1>
-      <button type="button" class="btn-icon" id="btnNextDay" aria-label="Следующий день">›</button>
-    </header>
+    <!-- Главный экран: Тренировки -->
+    <div class="screen screen-main" id="screenMain">
+      <header class="header">
+        <button type="button" class="btn-icon" id="btnPrevDay" aria-label="Предыдущий день">‹</button>
+        <h1 class="date-title" id="dateTitle">7 февраля 2025</h1>
+        <button type="button" class="btn-icon" id="btnNextDay" aria-label="Следующий день">›</button>
+      </header>
+      <button type="button" class="btn-profile" id="btnProfile">⚙️ Профиль</button>
 
-    <!-- Список упражнений -->
-    <main class="workout-list" id="workoutList">
-      <!-- Упражнения рендерятся через JS -->
-    </main>
+      <main class="workout-list" id="workoutList"></main>
 
-    <!-- Кнопка добавления -->
-    <div class="add-exercise" id="addExercise">
-      <span>+ Добавить упражнение</span>
+      <div class="add-exercise" id="addExercise">
+        <span>+ Добавить упражнение</span>
+      </div>
+    </div>
+
+    <!-- Экран профиля -->
+    <div class="screen screen-profile" id="screenProfile">
+      <header class="header">
+        <button type="button" class="btn-icon" id="btnBackProfile">‹</button>
+        <h1 class="date-title">Профиль</h1>
+        <div class="btn-icon-placeholder"></div>
+      </header>
+
+      <section class="profile-section">
+        <h3>Дни тренировок</h3>
+        <p class="hint">Выбери дни недели, когда тренируешься</p>
+        <div class="days-grid" id="daysGrid"></div>
+      </section>
+
+      <section class="profile-section">
+        <h3>План на неделю</h3>
+        <p class="hint">Составь тренировки для каждого тренировочного дня</p>
+        <div class="plan-days-list" id="planDaysList"></div>
+        <div class="add-plan-day" id="addPlanDay">+ Добавить день в план</div>
+      </section>
+
+      <button type="button" class="btn btn-primary btn-save-profile" id="btnSaveProfile">Сохранить</button>
     </div>
 
     <!-- Модальное окно для упражнения -->
@@ -43,11 +66,28 @@
             Количество подходов
             <input type="number" id="inputSetsCount" placeholder="4" min="1" max="10">
           </label>
-          <div class="sets-editor" id="setsEditor">
-            <!-- Редактор подходов -->
-          </div>
+          <div class="sets-editor" id="setsEditor"></div>
           <div class="modal-actions">
             <button type="button" class="btn btn-secondary" id="btnCancel">Отмена</button>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Модальное окно для дня плана -->
+    <div class="modal-overlay" id="planDayModal">
+      <div class="modal">
+        <h2 id="planDayModalTitle">День плана</h2>
+        <form id="planDayForm">
+          <label>
+            Название (например: Грудь, Спина, Ноги)
+            <input type="text" id="inputPlanDayName" placeholder="Грудь" required>
+          </label>
+          <div class="plan-day-exercises" id="planDayExercises"></div>
+          <button type="button" class="btn btn-secondary btn-add-ex-to-plan" id="btnAddExToPlan">+ Упражнение</button>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" id="btnCancelPlanDay">Отмена</button>
             <button type="submit" class="btn btn-primary">Сохранить</button>
           </div>
         </form>
