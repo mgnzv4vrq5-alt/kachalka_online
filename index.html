@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Тренировки</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Выбор дня -->
+    <header class="header">
+      <button type="button" class="btn-icon" id="btnPrevDay" aria-label="Предыдущий день">‹</button>
+      <h1 class="date-title" id="dateTitle">7 февраля 2025</h1>
+      <button type="button" class="btn-icon" id="btnNextDay" aria-label="Следующий день">›</button>
+    </header>
+
+    <!-- Список упражнений -->
+    <main class="workout-list" id="workoutList">
+      <!-- Упражнения рендерятся через JS -->
+    </main>
+
+    <!-- Кнопка добавления -->
+    <div class="add-exercise" id="addExercise">
+      <span>+ Добавить упражнение</span>
+    </div>
+
+    <!-- Модальное окно для упражнения -->
+    <div class="modal-overlay" id="exerciseModal">
+      <div class="modal">
+        <h2 id="modalTitle">Новое упражнение</h2>
+        <form id="exerciseForm">
+          <label>
+            Название
+            <input type="text" id="inputName" placeholder="Жим лёжа" required>
+          </label>
+          <label>
+            Вес (кг)
+            <input type="number" id="inputWeight" placeholder="80" min="0" step="0.5">
+          </label>
+          <label>
+            Количество подходов
+            <input type="number" id="inputSetsCount" placeholder="4" min="1" max="10">
+          </label>
+          <div class="sets-editor" id="setsEditor">
+            <!-- Редактор подходов -->
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" id="btnCancel">Отмена</button>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

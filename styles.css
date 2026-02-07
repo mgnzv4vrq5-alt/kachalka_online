@@ -1,0 +1,321 @@
+:root {
+  --tg-theme-bg-color: #1c1c1e;
+  --tg-theme-text-color: #ffffff;
+  --tg-theme-hint-color: #8e8e93;
+  --tg-theme-button-color: #0a84ff;
+  --tg-theme-button-text-color: #ffffff;
+  --card-bg: #2c2c2e;
+  --border-color: #3a3a3c;
+  --success: #30d158;
+  --danger: #ff453a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--tg-theme-bg-color);
+  color: var(--tg-theme-text-color);
+  min-height: 100vh;
+  padding-bottom: env(safe-area-inset-bottom, 20px);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 12px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  margin-bottom: 8px;
+}
+
+.btn-icon {
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: var(--card-bg);
+  color: var(--tg-theme-text-color);
+  font-size: 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.btn-icon:hover {
+  background: var(--border-color);
+}
+
+.btn-icon:active {
+  transform: scale(0.95);
+}
+
+.date-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Workout list */
+.workout-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.exercise-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid var(--border-color);
+}
+
+.exercise-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.exercise-name {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.exercise-weight {
+  font-size: 14px;
+  color: var(--tg-theme-hint-color);
+}
+
+.exercise-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-edit, .btn-delete {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.btn-edit {
+  background: rgba(10, 132, 255, 0.2);
+  color: var(--tg-theme-button-color);
+}
+
+.btn-delete {
+  background: rgba(255, 69, 58, 0.2);
+  color: var(--danger);
+}
+
+.btn-edit:active, .btn-delete:active {
+  transform: scale(0.9);
+}
+
+/* Sets display */
+.sets-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.set-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 56px;
+  padding: 8px 12px;
+  background: var(--tg-theme-bg-color);
+  border-radius: 10px;
+  font-size: 12px;
+  color: var(--tg-theme-hint-color);
+}
+
+.set-badge .rep-count {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--tg-theme-text-color);
+  margin-top: 2px;
+}
+
+/* Add exercise button */
+.add-exercise {
+  margin-top: 20px;
+  padding: 16px;
+  border: 2px dashed var(--border-color);
+  border-radius: 16px;
+  text-align: center;
+  color: var(--tg-theme-hint-color);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.add-exercise:hover {
+  border-color: var(--tg-theme-button-color);
+  color: var(--tg-theme-button-color);
+}
+
+.add-exercise:active {
+  transform: scale(0.98);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background: var(--card-bg);
+  border-radius: 20px 20px 0 0;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 24px;
+  transform: translateY(100%);
+  transition: transform 0.3s;
+}
+
+.modal-overlay.open .modal {
+  transform: translateY(0);
+}
+
+.modal h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.modal label {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: var(--tg-theme-hint-color);
+}
+
+.modal input[type="text"],
+.modal input[type="number"] {
+  width: 100%;
+  padding: 12px 16px;
+  margin-top: 6px;
+  background: var(--tg-theme-bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  color: var(--tg-theme-text-color);
+  font-size: 16px;
+}
+
+.modal input:focus {
+  outline: none;
+  border-color: var(--tg-theme-button-color);
+}
+
+/* Sets editor in modal */
+.sets-editor {
+  margin: 16px 0;
+}
+
+.sets-editor h3 {
+  font-size: 14px;
+  color: var(--tg-theme-hint-color);
+  margin-bottom: 12px;
+}
+
+.set-input-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.set-input-row span {
+  min-width: 80px;
+  font-size: 14px;
+  color: var(--tg-theme-hint-color);
+}
+
+.set-input-row input {
+  flex: 1;
+  padding: 10px 14px;
+  background: var(--tg-theme-bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--tg-theme-text-color);
+  font-size: 16px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.btn {
+  flex: 1;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: var(--tg-theme-button-color);
+  color: var(--tg-theme-button-text-color);
+}
+
+.btn-secondary {
+  background: var(--tg-theme-bg-color);
+  color: var(--tg-theme-text-color);
+  border: 1px solid var(--border-color);
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--tg-theme-hint-color);
+}
+
+.empty-state p {
+  margin-bottom: 8px;
+}
